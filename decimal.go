@@ -988,6 +988,10 @@ func (d *Decimal) Scan(value interface{}) error {
 		*d = New(v, 0)
 		return nil
 
+	case nil:
+		*d = New(0, 0)
+		return nil
+
 	default:
 		// default is trying to interpret value stored as string
 		str, err := unquoteIfQuoted(v)
